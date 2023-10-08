@@ -1,0 +1,65 @@
+<!-- <p>admin works!</p> -->
+<body>
+<h1 style="background-color: bisque;width: 250px;">ADD PRODUCT</h1>
+<form class="submit" (ngSubmit)="submitForm()" #myForm="ngForm">
+    <div class="form-group">
+      <label for="productId">Product Id</label>
+      <input type="number" class="form-control" id="productId" name="productId" [(ngModel)]="formData.productId" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input type="string" class="form-control" id="productName" name="productName" [(ngModel)]="formData.productName" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" class="form-control" id="price" name="price" [(ngModel)]="formData.price">
+    </div>
+
+    <div class="form-group">
+        <label for="color">Color</label>
+        <input type="string" class="form-control" id="color" name="color" [(ngModel)]="formData.color">
+      </div>
+  
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" class="form-control" id="image" name="image" (change)="onImageChange($event)">
+    </div>
+
+    <div class="form-group">
+        <label for="dimension">Dimension</label>
+        <input type="string" class="form-control" id="dimension" name="dimension" [(ngModel)]="formData.dimension">
+      </div>
+
+      <div class="form-group">
+        <label for="specification">Specification</label>
+        <input type="string" class="form-control" id="specification" name="specification" [(ngModel)]="formData.specification">
+      </div>
+
+      <div class="form-group">
+        <label for="menufacturer">Manufacturer</label>
+        <input type="string" class="form-control" id="menufacturer" name="menufacturer" [(ngModel)]="formData.menufacturer">
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input type="string" class="form-control" id="category" name="category" [(ngModel)]="formData.category">
+      </div>
+
+      
+      
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <h1 style="background-color: bisque;width: 320px;">REMOVE PRODUCT</h1>
+  <form class="remove">
+    <div class="form-group">
+      <label for="productId">Product Id</label>
+      <input type="number" class="form-control" id="productId" name="productId" [(ngModel)]="productId" required>
+    </div>
+    <button type="submit" (click)="removeProducts()">Remove Product</button>
+  </form>
+
+</body>
+  

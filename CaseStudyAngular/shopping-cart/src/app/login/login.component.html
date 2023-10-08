@@ -1,0 +1,11 @@
+<!-- <p>login works!</p> -->
+<div class="login-container">
+    <div class="login-form">
+        <h2>Login</h2>
+        <!-- <form> -->
+            <input type="text" placeholder="Username" required [(ngModel)]="authDetail.username">
+            <input type="password" placeholder="Password" required [(ngModel)]="authDetail.password">
+            <button type="submit" (click)="loginUser()">Log In</button>
+        <!-- </form> -->
+    </div>
+</div>

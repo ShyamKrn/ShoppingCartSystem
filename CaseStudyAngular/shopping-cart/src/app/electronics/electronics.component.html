@@ -1,0 +1,22 @@
+<!-- <div class="product-list">
+    <h2>Electronic Products</h2>
+    <ul>
+      <li *ngFor="let product of electronicsProducts">
+        <img src="data:image/png;base64,{{product.image}}" style="height: 100px;width: auto;"/>
+        <h2>{{ product.productName }}</h2>
+        <h2>Rs{{ product.price }}</h2>
+      </li>
+    </ul>
+  </div> -->
+  <div class="container">
+    <h2><u style="color: crimson;">Electronics Store</u></h2>
+    <div class="featured-products">
+        <div class="product" *ngFor="let product of electronicsProducts">
+            <img src="data:image/png;base64,{{product.image}}"/>
+            <h3>{{product.productName}}</h3>
+            <p>{{product.description}}</p>
+            <p>₹{{product.price}}</p>
+            <button (click)="addToCart(product.productId)">Add to Cart</button>
+        </div>
+    </div>
+</div>

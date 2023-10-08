@@ -1,0 +1,20 @@
+<!-- <p>cart works!</p> -->
+<body>
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items">
+            <li *ngFor="let product of products">
+                <img src="data:image/png;base64,{{product.image}}" alt="{{product.productName}}">
+                <div>
+                    <h3>{{product.productName}}</h3>
+                    <p>{{product.description}}</p>
+                    <p>${{product.price}}</p>
+                </div>
+                <button class="remove" (click)="removeFromCart(product.productId)">Remove</button>
+            </li>
+        </ul>
+        <p class="total">Total: ${{totalPrice}}</p>
+        <button id="show-total" (click)="calculateTotal()">Show Total</button>
+        <button id="checkout" (click)="transactionDisplay()">CheckOut</button>
+    </div>
+</body>
