@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'shopping-cart';
   isAuthenticated:any=false;
-  // isAdmin:any=false;
+  isAdmin:any=false;
   // details:any={};
+  roles:any='';
 
   constructor(private productService:ProductService, private router: Router){}
   ngOnInit(){
@@ -33,22 +34,26 @@ export class AppComponent {
     this.router.navigate(['/home']);
   }
 
-  // checkUser(){
-  //   this.productService.getCId().subscribe(data=>{this.productService.cId=data.customerId;
-  //     this.productService.getCustomerDetails().subscribe((data: any) => {
-  //       const dataObj = JSON.parse(data);
-  //       this.details = dataObj;
-  //     })});
-  //     if(this.details.roles=='ADMIN')
-  //     {
-  //       this.isAdmin=true;
-  //       this.productService.setAdminRole();
-  //       this.router.navigate(['/admin']);
-  //     }
-  //     else {
-  //       this.productService.setUserRole();
-  //       this.router.navigate(['/home']);
-  //     }
-  // }
+  checkUser(){
+      if(this.roles=='ADMIN')
+      {
+        this.isAdmin=true;
+        this.productService.setAdminRole();
+        this.router.navigate(['/admin']);
+      }
+      else {
+        this.productService.setUserRole();
+        this.router.navigate(['/home']);
+      }
+  }
+
+  updateUser(isAdmin:any)
+  {
+    this.isAdmin=isAdmin;
+    console.log(this.isAdmin);
+    if(isAdmin){
+      this.roles='ADMIN';
+    }
+  }
 }
 

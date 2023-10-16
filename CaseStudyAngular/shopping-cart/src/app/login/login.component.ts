@@ -23,16 +23,19 @@ export class LoginComponent {
       this.appObj.updateAuth(this.isUserValid);
       console.log(data);
       if(this.isUserValid){
+        this.productService.setAuthDetail(this.authDetail);
         this.productService.generateToken(this.authDetail).subscribe(data => {this.productService.token = data.token; 
           this.roles = data.roles;
           console.log(data.token);
           console.log(data.roles);
           if(this.roles === "ADMIN"){
             this.productService.setAdminRole();
+            this.appObj.updateUser(true);
             this.router.navigate(['/admin']);
           }
           else {
             this.productService.setUserRole();
+            this.appObj.updateUser(false);
             this.router.navigate(['/home']);
           }
         });

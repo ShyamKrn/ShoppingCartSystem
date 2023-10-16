@@ -1,0 +1,35 @@
+<div class="container">
+
+    <table width="100%">
+      <tr>
+        <td width="75px"><div class="logotype">UrbanHaul</div></td>
+        <td width="300px" style="background: #fee977;border-left:15px solid #fff; padding-left:30px;font-size:26px;font-weight:bold;letter-spacing:-1px;">Order confirmation</td>
+        <td></td>
+      </tr>
+    </table> 
+    <h3>Your contact details</h3>
+    <table width="100%" style="border-collapse: collapse;">
+      <tr>
+        <td width="180px" class="column-title">E-mail<td>
+        <td class="column-detail">{{authDetail.username}}<td>
+      </tr>
+    </table>
+    <h3>Your order</h3>
+  
+     <table *ngFor="let product of products" width="100%" style="border-collapse: collapse;border-bottom:1px solid #eee;">
+       <tr>
+         <td width="20%" class="column-header">Product Name</td>
+         <td width="40%" class="column-header">Price</td>
+         <td width="30%" class="column-header">Color</td>
+         <td width="10%" class="column-header">Manufacturer</td>
+       </tr>
+       <tr>
+         <td class="row">{{product.productName}}</td>
+         <td class="row">{{product.price}}</td>
+         <td class="row">{{product.color}}</td>
+         <td class="row">{{product.menufacturer}}</td>
+       </tr>
+    </table>
+    <div class="alert">Thank you for choosing us!!</div>
+    <div class="socialmedia">Your order will be delivered to the registered address</div>
+  </div>

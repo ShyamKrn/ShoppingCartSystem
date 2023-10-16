@@ -41,6 +41,7 @@ body {
 .cart img {
     max-width: 100px;
     margin-right: 20px;
+    height: 150px;
 }
 
 .cart h3 {

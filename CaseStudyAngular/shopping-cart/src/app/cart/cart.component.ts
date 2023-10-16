@@ -20,7 +20,8 @@ export class CartComponent {
 
   ngOnInit(){
     
-    this.productService.displayProductInCart().subscribe(data => this.products = data);
+    this.productService.displayProductInCart().subscribe(data => {this.products = data
+      this.productService.setConfirmationProducts(this.products)});
   }
   // addToCart() {
   //   // this.productService.addToCart(this.customerId, product.id).subscribe(data=>console.log("Product added"))
@@ -83,6 +84,9 @@ export class CartComponent {
 
   processResponse(resp: any){
     console.log(resp);
+    if(resp.razorpay_payment_id){
+      this.router.navigate(['/confirmation']);
+    }
   }
 
 

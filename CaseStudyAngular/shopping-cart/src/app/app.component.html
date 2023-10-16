@@ -27,12 +27,12 @@
           <!-- <button>Profile</button> -->
           <li>
             <div class="dropdown">
-              <button class="dropbtn">Profile</button>
+              <button style="background-color: rgb(237, 61, 61);border-radius:10px;" class="dropbtn">Profile</button>
               <div class="dropdown-content">
+                <a *ngIf="isAdmin" (click)="checkUser()">Admin</a>
                 <a routerLink="/account">Account</a>
                 <a (click)="goToCart()">Cart</a>
-                <a (click)="logout()">Logout</a>
-                <!-- <a *ngIf="isAdmin">hello</a> -->
+                <a (click)="logout()">Logout</a>  
               </div>
             </div>
           </li>

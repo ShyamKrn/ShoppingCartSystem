@@ -13,6 +13,7 @@ export class ProductService {
   public authDetails: Authdetails = new Authdetails();
   public token: any;
   public userRole: string='';
+  products:any[]=[];
 
   private _url:string="http://localhost:8081/products/view";
   private urlForLogin = "http://localhost:9898/auth/validate";
@@ -32,6 +33,8 @@ export class ProductService {
   private urlForAddProductToDatabase="http://localhost:8081/products/add";
   private urlForRemoveProductFromDatabase="http://localhost:8081/products/remove/";
   private urlForGenerateToken = "http://localhost:9898/auth/generatetoken";
+  private urlForaddProductToHistory="http://localhost:8765/cart/addProductToHistory/";
+  private urlForgetHistoryProducts="http://localhost:8765/cart/getHistoryProducts/";
   //{cartId}/{productId}
 
   constructor(private http:HttpClient) { }
@@ -119,26 +122,46 @@ export class ProductService {
     return this.http.post<any>(this.urlForGenerateToken, authDetail);
   }
 
+//1
+  addToHistory(): Observable<any> {
+    return this.http.post<any>(this.urlForaddProductToHistory + this.cId,this.cId);
+  }
+
+  getProductFromHistory(){
+    return this.http.get<any>(this.urlForgetHistoryProducts+this.cId);
+  }
+  //
 
   setAdminRole() {
     this.userRole = 'ADMIN';
   }
 
-  // Set the user's role to 'USER' (or any other role you need)
   setUserRole() {
     this.userRole = 'USER';
   }
 
-  // Check if the user has the 'ADMIN' role
   isUserAdmin(): boolean {
     return this.userRole === 'ADMIN';
   }
 
-  // Check if the user has the 'USER' role (or any other role)
   isUserUser(): boolean {
     return this.userRole === 'USER';
   }
 
+  setAuthDetail(authDetail: Authdetails) {
+    this.authDetails = authDetail;
+  }
 
+  getAuthDetail(): Authdetails {
+    return this.authDetails;
+  }
+
+  setConfirmationProducts(products: any[]){
+    this.products=products;
+  }
+
+  getConfirmationProducts():any[]{
+    return this.products;
+  }
 
 }

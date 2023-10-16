@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AdminComponent } from './admin/admin.component';
     HomeComponent,
     CartComponent,
     AccountComponent,
-    AdminComponent
+    AdminComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -8,12 +8,12 @@
                 <div>
                     <h3>{{product.productName}}</h3>
                     <p>{{product.description}}</p>
-                    <p>${{product.price}}</p>
+                    <p>₹{{product.price}}</p>
                 </div>
                 <button class="remove" (click)="removeFromCart(product.productId)">Remove</button>
             </li>
         </ul>
-        <p class="total">Total: ${{totalPrice}}</p>
+        <p class="total">Total: ₹{{totalPrice}}</p>
         <button id="show-total" (click)="calculateTotal()">Show Total</button>
         <button id="checkout" (click)="transactionDisplay()">CheckOut</button>
     </div>

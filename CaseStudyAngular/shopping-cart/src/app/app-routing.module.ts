@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './admin.guard';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'cart', component: CartComponent},
   {path: 'account', component: AccountComponent},
+  {path: 'confirmation', component: ConfirmationComponent},
   {path: 'admin', component: AdminComponent,canActivate: [AdminGuard],}
 ];
 
