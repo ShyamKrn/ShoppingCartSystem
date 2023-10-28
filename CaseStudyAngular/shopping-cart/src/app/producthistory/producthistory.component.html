@@ -1,0 +1,19 @@
+<!-- <p>producthistory works!</p> -->
+<body>
+    <h1>Your Purchase History</h1>
+
+    <ul>
+        <p>Last Purchase Date: {{ purchaseDate | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p>Products you have already purchased:</p>
+        <li *ngFor="let product of products">
+            <img src="data:image/png;base64,{{product.image}}" alt="{{product.productName}}">
+            <div>
+                <h3>{{product.productName}}</h3>
+                <p>{{product.description}}</p>
+                <p>₹{{product.price}}</p>
+            </div>
+        </li>
+    </ul>
+
+    <p>Thank you for your continued support!</p>
+</body>

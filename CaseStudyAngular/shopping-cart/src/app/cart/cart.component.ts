@@ -85,6 +85,7 @@ export class CartComponent {
   processResponse(resp: any){
     console.log(resp);
     if(resp.razorpay_payment_id){
+      this.productService.addToHistory().subscribe();
       this.router.navigate(['/confirmation']);
     }
   }

@@ -35,9 +35,21 @@ export class ProductService {
   private urlForGenerateToken = "http://localhost:9898/auth/generatetoken";
   private urlForaddProductToHistory="http://localhost:8765/cart/addProductToHistory/";
   private urlForgetHistoryProducts="http://localhost:8765/cart/getHistoryProducts/";
+  private urlForgetPurchaseDate="http://localhost:8765/cart/getDate/";
+  private urlForForgotPasswordVerificationCode="http://localhost:9898/auth/sendResetVerificationCode/";
+  private urlForVerifyEmailForPasswordReset = "http://localhost:9898/auth/verifyAccountForPasswordReset/";
+  private urlForUpdateUserInfo="http://localhost:8765/auth/updateCustomer";
   //{cartId}/{productId}
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    this.authDetails = this.getStoredAuthDetails();
+    this.token=localStorage.getItem('token');
+  }
+
+  private getStoredAuthDetails(): Authdetails {
+    const storedAuthDetails = localStorage.getItem('authKey');
+    return storedAuthDetails ? JSON.parse(storedAuthDetails) : new Authdetails();
+  }
 
   getProducts():Observable<IProduct[]>{
     return this.http.get<IProduct[]>(this._url);
@@ -150,6 +162,7 @@ export class ProductService {
 
   setAuthDetail(authDetail: Authdetails) {
     this.authDetails = authDetail;
+    localStorage.setItem('authKey',JSON.stringify(this.authDetails));
   }
 
   getAuthDetail(): Authdetails {
@@ -162,6 +175,30 @@ export class ProductService {
 
   getConfirmationProducts():any[]{
     return this.products;
+  }
+
+  getPurchaseDate(){
+    return this.http.get<any>(this.urlForgetPurchaseDate+this.cId);
+  }
+
+  isLoggedIn(){
+    if(localStorage.getItem('check')!=null){
+      console.log("islogged in");
+      return true;
+    }
+    return false;
+  }
+  sendVerificationCodeForPasswordReset(username:string): Observable<any>{
+    console.log(username);
+    return this.http.post<any>(this.urlForForgotPasswordVerificationCode+username,username);
+  }
+
+  verifyEmailForPasswordRest(token: any): Observable<any>{
+    return this.http.get<any>(this.urlForVerifyEmailForPasswordReset + token);
+  }
+
+  updateUserInfo(authDetail: Authdetails): Observable<any> {
+    return this.http.post<any>(`${this.urlForUpdateUserInfo}`, authDetail);
   }
 
 }

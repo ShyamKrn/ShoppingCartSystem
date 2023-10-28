@@ -21,13 +21,19 @@ export class LoginComponent {
     console.log(this.authDetail);
     this.productService.validateUser(this.authDetail).subscribe(data => {this.isUserValid = data;
       this.appObj.updateAuth(this.isUserValid);
+      
+      
       console.log(data);
       if(this.isUserValid){
         this.productService.setAuthDetail(this.authDetail);
         this.productService.generateToken(this.authDetail).subscribe(data => {this.productService.token = data.token; 
+          localStorage.setItem('token',this.productService.token);
           this.roles = data.roles;
           console.log(data.token);
           console.log(data.roles);
+          localStorage.setItem("check",'true');
+          
+          this.productService.isLoggedIn();
           if(this.roles === "ADMIN"){
             this.productService.setAdminRole();
             this.appObj.updateUser(true);

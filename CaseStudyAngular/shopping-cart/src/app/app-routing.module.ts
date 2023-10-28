@@ -12,6 +12,9 @@ import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './admin.guard';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { isLoggedInGuard } from './is-logged-in.guard';
+import { ProducthistoryComponent } from './producthistory/producthistory.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -22,9 +25,11 @@ const routes: Routes = [
   {path: 'aboutus', component: AboutusComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'account', component: AccountComponent},
-  {path: 'confirmation', component: ConfirmationComponent},
+  {path: 'forgotpassword', component: ForgotpasswordComponent},
+  {path: 'cart', component: CartComponent,canActivate: [isLoggedInGuard],},
+  {path: 'account', component: AccountComponent,canActivate: [isLoggedInGuard],},
+  {path: 'confirmation', component: ConfirmationComponent,canActivate: [isLoggedInGuard],},
+  {path: 'producthistory', component: ProducthistoryComponent,canActivate: [isLoggedInGuard],},
   {path: 'admin', component: AdminComponent,canActivate: [AdminGuard],}
 ];
 

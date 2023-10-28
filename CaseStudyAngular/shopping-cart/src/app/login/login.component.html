@@ -5,7 +5,8 @@
         <!-- <form> -->
             <input type="text" placeholder="Username" required [(ngModel)]="authDetail.username">
             <input type="password" placeholder="Password" required [(ngModel)]="authDetail.password">
-            <button type="submit" (click)="loginUser()">Log In</button>
+            <button type="submit" (click)="loginUser()">Log In</button><br/><br/>
+            <button><a routerLink="/forgotpassword">Forgot Password</a></button>
         <!-- </form> -->
     </div>
 </div>

@@ -37,6 +37,11 @@
     cursor: pointer;
 }
 
+.login-form button a{
+    text-decoration: none;
+    color: white;
+}
+
 .login-form button:hover {
     background-color: #555;
 }

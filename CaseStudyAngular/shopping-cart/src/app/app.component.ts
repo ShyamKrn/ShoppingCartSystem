@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'shopping-cart';
-  isAuthenticated:any=false;
+  // isAuthenticated:any=false;
+  isAuthenticated:any=localStorage.getItem('isAuth');
   isAdmin:any=false;
   // details:any={};
   roles:any='';
@@ -21,6 +22,7 @@ export class AppComponent {
 
   updateAuth(isAuth:any){
     this.isAuthenticated=isAuth;
+    localStorage.setItem('isAuth',this.isAuthenticated);
     console.log("app" + this.isAuthenticated);
   }
   goToCart(){
@@ -31,6 +33,7 @@ export class AppComponent {
   logout(){
     this.productService.authDetails = {};
     this.isAuthenticated = false;
+    localStorage.clear();
     this.router.navigate(['/home']);
   }
 
